@@ -9,12 +9,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-@Data @RequiredArgsConstructor @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 
 public class OrderImpl {
-    int id;
-    UserAdmin admin;
-    Service service;
-    StatusEnum status;
-    ActionEnum action;
+    private int id;
+    private UserAdmin admin;
+    private Service service;
+    private StatusEnum status;
+    private ActionEnum action;
 }

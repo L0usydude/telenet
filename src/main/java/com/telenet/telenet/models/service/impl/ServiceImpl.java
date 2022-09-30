@@ -9,14 +9,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor @NoArgsConstructor @RequiredArgsConstructor @Data
+@AllArgsConstructor @NoArgsConstructor @Data
 
 public class ServiceImpl implements Service {
-    int id;
-    String name;
-    String description;
-    double price;
-    Template template;
-    User user;
-    StatusEnum status;
+    private int id;
+    private String name;
+    private String description;
+    private double price;
+    private Template template;
+    private User user;
+    private StatusEnum status;
 }

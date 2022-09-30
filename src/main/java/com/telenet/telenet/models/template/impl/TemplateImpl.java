@@ -6,12 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@AllArgsConstructor @NoArgsConstructor @RequiredArgsConstructor @Data
+@AllArgsConstructor @NoArgsConstructor @Data @Component
 public class TemplateImpl implements Template {
-    int id;
-    String name;
-    String description;
-    double price;
-    Area area;
+    private int id;
+    private String name;
+    private String description;
+    private double price;
+    @Autowired
+    private Area area;
 }

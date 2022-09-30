@@ -20,5 +20,5 @@ public interface Service{
     void setPrice(double newPrice);
     void setTemplate(Template newTemplate);
     void setUser(User newUser);
-    StatusEnum setStatus(StatusEnum newStatus);
+    void setStatus(StatusEnum newStatus);
 }

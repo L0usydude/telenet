@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 
-@Data @AllArgsConstructor @NoArgsConstructor @RequiredArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 public class UserAdmin {
     private int id;
     private String name;

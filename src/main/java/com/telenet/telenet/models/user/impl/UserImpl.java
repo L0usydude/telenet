@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 
-@Data @AllArgsConstructor @NoArgsConstructor @RequiredArgsConstructor
+@Data @AllArgsConstructor @RequiredArgsConstructor
 public class UserImpl implements User {
     private int id;
     private String name;
