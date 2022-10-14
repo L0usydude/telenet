@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.Map;
 
 @Component @ComponentScan(basePackages = "java.util.HashMap")
@@ -35,6 +36,11 @@ public class Storage {
         TemplateMap = templateMap;
         UserImplMap = userImplMap;
         UserAdminMap = userAdminMap;
+    }
+
+    @PostConstruct
+    public void test(){
+
     }
 
     public Area getArea(int id){
