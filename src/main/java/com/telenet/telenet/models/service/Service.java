@@ -1,24 +1,35 @@
 package com.telenet.telenet.models.service;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.telenet.telenet.models.BaseEntity;
 import com.telenet.telenet.models.enums.status.StatusEnum;
 import com.telenet.telenet.models.template.Template;
 import com.telenet.telenet.models.user.User;
-import com.telenet.telenet.models.user.impl.UserImpl;
+import lombok.*;
 
+@AllArgsConstructor @NoArgsConstructor @Getter
+@Setter
+@ToString
+@JsonTypeName("Service") @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "type")
 
-public interface Service{
-    int getId();
-    String getName();
-    String getDescription();
-    double getPrice();
-    Template getTemplate();
-    User getUser();
-    StatusEnum getStatus();
-    void setId(int newId);
-    void setName(String newName);
-    void setDescription(String newDescription);
-    void setPrice(double newPrice);
-    void setTemplate(Template newTemplate);
-    void setUser(User newUser);
-    void setStatus(StatusEnum newStatus);
+public class Service extends BaseEntity {
+    private String name;
+    private String description;
+    private double price;
+    private Template template;
+    private User user;
+    private StatusEnum status;
+
+    public Service(int id, String name, String description, double price, Template template, User user, StatusEnum status) {
+        super(id);
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.template = template;
+        this.user = user;
+        this.status = status;
+    }
 }

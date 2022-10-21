@@ -5,8 +5,6 @@ import com.telenet.telenet.models.order.Order;
 import com.telenet.telenet.models.service.Service;
 import com.telenet.telenet.models.template.Template;
 import com.telenet.telenet.models.user.User;
-import com.telenet.telenet.models.user.impl.UserImpl;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
