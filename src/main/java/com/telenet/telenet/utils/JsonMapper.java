@@ -42,7 +42,7 @@ public class JsonMapper {
     }
 
     public static <T extends BaseEntity> void serialize(Map<Integer, T> values, Class<T> className) throws IOException {
-        try (Writer writer = new FileWriter(pathTemplate + className.getSimpleName(), true);) {
+        try (Writer writer = new FileWriter(pathTemplate + className.getSimpleName());) {
             for (T value :
                     values.values()) {
                 ObjectMapper objectMapper = new ObjectMapper();
@@ -52,7 +52,7 @@ public class JsonMapper {
         }
     }
     public static void serialize(Map<Integer, User> values, RoleEnum role) throws IOException {
-        try (Writer writer = new FileWriter(pathTemplate + User.class.getSimpleName() + role.toString(), true);) {
+        try (Writer writer = new FileWriter(pathTemplate + User.class.getSimpleName() + role.toString());) {
             for (User value :
                     values.values()) {
                 ObjectMapper objectMapper = new ObjectMapper();

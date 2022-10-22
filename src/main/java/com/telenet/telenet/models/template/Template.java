@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor @NoArgsConstructor @Getter
 @Setter
 @ToString
+@Builder
 @JsonTypeName("Template") @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "type")
 public class Template extends BaseEntity {

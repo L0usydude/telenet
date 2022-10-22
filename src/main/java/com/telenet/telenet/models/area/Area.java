@@ -8,6 +8,7 @@ import lombok.*;
 import org.springframework.stereotype.Component;
 
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter @ToString
+@Builder
 @JsonTypeName("Area") @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "type")
 public class Area extends BaseEntity {

@@ -12,7 +12,8 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString @NoArgsConstructor @AllArgsConstructor
+@ToString
+@Builder @NoArgsConstructor @AllArgsConstructor
 @JsonTypeName("Order") @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "type")
 

@@ -12,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor @NoArgsConstructor @Getter
 @Setter
 @ToString
+@Builder
 @JsonTypeName("Service") @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "type")
 

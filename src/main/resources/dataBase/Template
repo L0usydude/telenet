@@ -1,0 +1,1 @@
+{"type":"com.telenet.telenet.models.template.Template","id":0,"name":"tempName1","description":"tempDescription1","price":150.0,"area":{"type":"com.telenet.telenet.models.area.Area","id":0,"name":"area0","description":"area with num 0"}}

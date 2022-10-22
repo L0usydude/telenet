@@ -1,6 +1,7 @@
 package com.telenet.telenet.utils;
 
 import com.telenet.telenet.models.area.Area;
+import com.telenet.telenet.models.enums.roles.RoleEnum;
 import com.telenet.telenet.models.order.Order;
 import com.telenet.telenet.models.service.Service;
 import com.telenet.telenet.models.template.Template;
@@ -10,110 +11,153 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.io.IOException;
 import java.util.Map;
 
 @Component @ComponentScan(basePackages = "java.util.HashMap")
 public class Storage {
-    Map<Integer, Area> AreaMap;
-    Map<Integer, Order> OrderMap;
-    Map<Integer, Service> ServiceMap;
-    Map<Integer, Template> TemplateMap;
-    Map<Integer, User> UserImplMap;
-    Map<Integer, User> UserAdminMap;
+    Map<Integer, Area> areaMap;
+    Map<Integer, Order> orderMap;
+    Map<Integer, Service> serviceMap;
+    Map<Integer, Template> templateMap;
+    Map<Integer, User> userImplMap;
+    Map<Integer, User> userAdminMap;
 
-    @Autowired
-    public Storage(Map<Integer, Area> areaMap,
-                   Map<Integer, Order> orderMap,
-                   Map<Integer, Service> serviceMap,
-                   Map<Integer, Template> templateMap,
-                   Map<Integer, User> userImplMap,
-                   Map<Integer, User> userAdminMap) {
-        AreaMap = areaMap;
-        OrderMap = orderMap;
-        ServiceMap = serviceMap;
-        TemplateMap = templateMap;
-        UserImplMap = userImplMap;
-        UserAdminMap = userAdminMap;
-    }
+//    @Autowired
+//    public Storage(Map<Integer, Area> areaMap,
+//                   Map<Integer, Order> orderMap,
+//                   Map<Integer, Service> serviceMap,
+//                   Map<Integer, Template> templateMap,
+//                   Map<Integer, User> userImplMap,
+//                   Map<Integer, User> userAdminMap) {
+//        this.areaMap = areaMap;
+//        this.orderMap = orderMap;
+//        this.serviceMap = serviceMap;
+//        this.templateMap = templateMap;
+//        this.userImplMap = userImplMap;
+//        this.userAdminMap = userAdminMap;
+//    }
 
     @PostConstruct
-    public void test(){
+    public void initMethod() throws IOException {
+        System.out.println("init");
+        areaMap = JsonMapper.deserialize(Area.class);
+        orderMap = JsonMapper.deserialize(Order.class);
+        serviceMap = JsonMapper.deserialize(Service.class);
+        templateMap = JsonMapper.deserialize(Template.class);
+        userAdminMap = JsonMapper.deserialize(RoleEnum.ADMIN);
+        userImplMap = JsonMapper.deserialize(RoleEnum.DEFAULT_USER);
+    }
 
+    @PreDestroy
+    public void destroyMethod() throws IOException {
+        System.out.println("destroy");
+        JsonMapper.serialize(areaMap, Area.class);
+        JsonMapper.serialize(orderMap, Order.class);
+        JsonMapper.serialize(templateMap, Template.class);
+        JsonMapper.serialize(serviceMap, Service.class);
+        JsonMapper.serialize(userAdminMap, RoleEnum.ADMIN);
+        JsonMapper.serialize(userImplMap, RoleEnum.DEFAULT_USER);
     }
 
     public Area getArea(int id){
-        return AreaMap.get(id);
+        return areaMap.get(id);
     }
     public Order getOrder(int id){
-        return OrderMap.get(id);
+        return orderMap.get(id);
     }
     public Template getTemplate(int id){
-        return TemplateMap.get(id);
+        return templateMap.get(id);
     }
     public Service getService(int id){
-        return ServiceMap.get(id);
+        return serviceMap.get(id);
     }
     public User getUserAdmin(int id){
-        return UserAdminMap.get(id);
+        return userAdminMap.get(id);
     }
     public User getUserImpl(int id){
-        return UserImplMap.get(id);
+        return userImplMap.get(id);
     }
 
     public void updateArea(int id, Area newArea){
-        AreaMap.replace(id, newArea);
+        areaMap.replace(id, newArea);
     }
     public void updateOrder(int id, Order newOrder){
-        OrderMap.replace(id, newOrder);
+        orderMap.replace(id, newOrder);
     }
     public void updateTemplate(int id, Template newTemplate){
-        TemplateMap.replace(id, newTemplate);
+        templateMap.replace(id, newTemplate);
     }
     public void updateService(int id, Service newService){
-        ServiceMap.replace(id, newService);
+        serviceMap.replace(id, newService);
     }
     public void updateUserAdmin(int id, User newUserAdmin){
-        UserAdminMap.replace(id, newUserAdmin);
+        userAdminMap.replace(id, newUserAdmin);
     }
     public void updateUserImpl(int id, User newUserImpl){
-        UserImplMap.replace(id, newUserImpl);
+        userImplMap.replace(id, newUserImpl);
     }
 
     public void delArea(int id){
-        AreaMap.remove(id);
+        areaMap.remove(id);
     }
     public void delOrder(int id){
-        OrderMap.remove(id);
+        orderMap.remove(id);
     }
     public void delTemplate(int id){
-        TemplateMap.remove(id);
+        templateMap.remove(id);
     }
     public void delService(int id){
-        ServiceMap.remove(id);
+        serviceMap.remove(id);
     }
     public void delUserAdmin(int id){
-        UserAdminMap.remove(id);
+        userAdminMap.remove(id);
     }
     public void delUserImpl(int id){
-        UserImplMap.remove(id);
+        userImplMap.remove(id);
     }
 
     public void addArea(Area newArea){
-        AreaMap.put(newArea.getId(), newArea);
+        areaMap.put(newArea.getId(), newArea);
     }
     public void addOrder(Order newOrder){
-        OrderMap.put(newOrder.getId(), newOrder);
+        orderMap.put(newOrder.getId(), newOrder);
     }
     public void addService(Service newService){
-        ServiceMap.put(newService.getId(), newService);
+        serviceMap.put(newService.getId(), newService);
     }
     public void addTemplate(Template newTemplate){
-        TemplateMap.put(newTemplate.getId(), newTemplate);
+        templateMap.put(newTemplate.getId(), newTemplate);
     }
     public void  addUserImpl(User newUserImpl){
-        UserImplMap.put(newUserImpl.getId(), newUserImpl);
+        userImplMap.put(newUserImpl.getId(), newUserImpl);
     }
     public void addUserAdmin(User newUserAdmin){
-        UserAdminMap.put(newUserAdmin.getId(), newUserAdmin);
+        userAdminMap.put(newUserAdmin.getId(), newUserAdmin);
+    }
+
+    public Map<Integer, Area> getAreaMap() {
+        return areaMap;
+    }
+
+    public Map<Integer, Order> getOrderMap() {
+        return orderMap;
+    }
+
+    public Map<Integer, Service> getServiceMap() {
+        return serviceMap;
+    }
+
+    public Map<Integer, Template> getTemplateMap() {
+        return templateMap;
+    }
+
+    public Map<Integer, User> getUserImplMap() {
+        return userImplMap;
+    }
+
+    public Map<Integer, User> getUserAdminMap() {
+        return userAdminMap;
     }
 }
