@@ -6,7 +6,6 @@ import com.telenet.telenet.models.order.Order;
 import com.telenet.telenet.models.service.Service;
 import com.telenet.telenet.models.template.Template;
 import com.telenet.telenet.models.user.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.util.Map;
-
+import java.util.Objects;
 @Component @ComponentScan(basePackages = "java.util.HashMap")
 public class Storage {
     Map<Integer, Area> areaMap;
@@ -159,5 +158,12 @@ public class Storage {
 
     public Map<Integer, User> getUserAdminMap() {
         return userAdminMap;
+    }
+
+    public User getUserImplByLogin(String name){
+        return userImplMap.values().stream().filter(user -> Objects.equals(user.getLogin(), name)).findFirst().orElse(null);
+    }
+    public User getAdminByLogin(String name){
+        return userAdminMap.values().stream().filter(user -> Objects.equals(user.getLogin(), name)).findFirst().orElse(null);
     }
 }

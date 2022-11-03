@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AuthorizationController {
+    @Autowired
     Storage storage;
     @Autowired
     public AuthorizationController(Storage storage1){
@@ -17,11 +18,22 @@ public class AuthorizationController {
     }
     @GetMapping("/authorization")
     public String authorization(Model model){
+        model.addAttribute("error","" );
         return "authorization";
     }
 
     @PostMapping("/authorization")
-    public void checker(Model model, @RequestParam(name = "login") String login, @RequestParam(name = "password") String password ){
-        System.out.println(login + password);
+    public String checker(Model model, @RequestParam(name = "login") String login, @RequestParam(name = "password") String password ){
+        if(storage.getAdminByLogin(login) != null){
+            return "redirect:/admin/admins";
+        }
+        else if (storage.getUserImplByLogin(login) != null){
+            return "redirect:/test";
+        }
+        else{
+            model.addAttribute("error","error" );
+            model.addAttribute("login",login);
+            return "/authorization";
+        }
     }
 }
