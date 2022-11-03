@@ -129,7 +129,7 @@ public class Storage {
     public void addTemplate(Template newTemplate){
         templateMap.put(newTemplate.getId(), newTemplate);
     }
-    public void  addUserImpl(User newUserImpl){
+    public void addUserImpl(User newUserImpl){
         userImplMap.put(newUserImpl.getId(), newUserImpl);
     }
     public void addUserAdmin(User newUserAdmin){

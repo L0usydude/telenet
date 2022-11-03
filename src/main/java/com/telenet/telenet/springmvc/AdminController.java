@@ -7,30 +7,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller @RequestMapping("/admin")
 public class AdminController {
+    @GetMapping
+    public String startAdmin(){
+        return "users/admin";
+    }
     @GetMapping("/admins")
     public String adminsOut(Model model){
         model.addAttribute("adminsCollection", "admin");
-        return "/admins";
+        return "modelsLists/admins";
     }
     @GetMapping("/users")
     public String usersOut(Model model){
         model.addAttribute("usersCollection", "user");
-        return "/users";
+        return "modelsLists/users";
     }
     @GetMapping("/templates")
     public String templatesOut(Model model){
         model.addAttribute("templatesCollection", "template");
-        return "/templates";
+        return "modelsLists/templates";
     }
     @GetMapping("/services")
     public String servicesOut(Model model){
         model.addAttribute("servicesCollection", "service");
-        return "/services";
+        return "modelsLists/services";
     }
     @GetMapping("/orders")
     public String ordersOut(Model model)
     {
         model.addAttribute("ordersCollection", "order");
-        return "orders";
+        return "modelsLists/orders";
     }
 }
