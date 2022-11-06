@@ -1,5 +1,7 @@
 package com.telenet.telenet.springmvc;
 
+import com.telenet.telenet.utils.Storage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,13 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller @RequestMapping("/admin")
 public class AdminController {
+    @Autowired
+    Storage storage1;
     @GetMapping
     public String startAdmin(){
         return "users/admin";
     }
     @GetMapping("/admins")
     public String adminsOut(Model model){
-        model.addAttribute("adminsCollection", "admin");
+        model.addAttribute("adminsCollection", storage1.getUserAdminMap().values());
         return "modelsLists/admins";
     }
     @GetMapping("/users")

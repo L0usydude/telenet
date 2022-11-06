@@ -3,3 +3,9 @@ form{
     align-items: center;
     justify-content: center;
 }
+.top-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+}

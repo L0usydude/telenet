@@ -1,5 +1,6 @@
 package com.telenet.telenet.springmvc;
 
+import com.telenet.telenet.models.user.User;
 import com.telenet.telenet.utils.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,23 @@ public class AuthorizationController {
 
     @PostMapping("/authorization")
     public String checker(Model model, @RequestParam(name = "login") String login, @RequestParam(name = "password") String password ){
-        if(storage.getAdminByLogin(login) != null){
-            return "redirect:/admin";
+        User user = storage.getAdminByLogin(login);
+        User userimpl = storage.getUserImplByLogin(login);
+        if(user != null){
+            if(user.getPassword().equals(password)) {
+                return "redirect:/admin";
+            }
+            else {
+                return "authorization/authorization";
+            }
         }
-        else if (storage.getUserImplByLogin(login) != null){
-            return "redirect:/test";
+        else if (userimpl != null){
+            if (userimpl.getPassword().equals(password)) {
+                return "redirect:/test";
+            }
+            else {
+                return "authorization/authorization";
+            }
         }
         else{
             model.addAttribute("error","error" );

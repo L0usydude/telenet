@@ -6,16 +6,11 @@
     <title>Title</title>
 </head>
 <body>
-<table>
-    <h1>nothing</h1>
-    <a th:href="@{modelsLists/admins}">admins</a>
-    <a th:href="@{modelsLists/users}">users</a>
-</table>
-<table>
-    <tr th:each = "admin :${admins}">
-        2312312
-    </tr>
-</table>
+<ul th:each="value : ${adminsCollection}">
+    <li type="text" th:value = "${value.getName()}"></li>
+    <li>value.login</li>
+    <li>value.password</li>
+</ul>
 
 </body>
 </html>

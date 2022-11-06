@@ -32,7 +32,7 @@ public class RegistrationController {
             return "authorization/authorization";
         }
         else {
-            return "authorization/registration";
+            return "authorization/authorization";
         }
     }
 }
