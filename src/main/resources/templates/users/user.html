@@ -3,11 +3,14 @@
       xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>user</title>
+    <title>Title</title>
 </head>
 <body>
 <table>
-    <h1>nothing</h1>
+    <a th:href="@{/user/userServices(login = ${login})}">services </a>
+    <a th:href="@{/user/orders(login = ${login})}">orders </a>
 </table>
+
+
 </body>
 </html>

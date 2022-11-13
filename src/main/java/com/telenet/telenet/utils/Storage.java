@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 @Component @ComponentScan(basePackages = "java.util.HashMap")
@@ -165,5 +166,8 @@ public class Storage {
     }
     public User getAdminByLogin(String name){
         return userAdminMap.values().stream().filter(user -> Objects.equals(user.getLogin(), name)).findFirst().orElse(null);
+    }
+    public List<Service> getServiceListByUserImplLogin(String login){
+        return serviceMap.values().stream().filter(service -> service.getUser().getLogin().equals(login)).toList();
     }
 }
