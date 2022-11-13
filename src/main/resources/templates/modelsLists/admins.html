@@ -7,9 +7,9 @@
 </head>
 <body>
 <ul th:each="value : ${adminsCollection}">
-    <li type="text" th:value = "${value.getName()}"></li>
-    <li>value.login</li>
-    <li>value.password</li>
+    <li><span th:text = "${value.name}">Name</span></li>
+    <li><span th:text = "${value.login}">Login</span></li>
+    <li><span th:text = "${value.password}">Password</span></li>
 </ul>
 
 </body>

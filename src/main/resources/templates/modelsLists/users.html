@@ -6,11 +6,11 @@
     <title>Title</title>
 </head>
 <body>
-<table>
-    <tr th:each = "user :${users}">
-        2312312
-    </tr>
-</table>
+<ul th:each="value : ${usersCollection}">
+    <li><span th:text = "${value.name}">Name</span></li>
+    <li><span th:text = "${value.login}">Login</span></li>
+    <li><span th:text = "${value.password}">Password</span></li>
+</ul>
 
 </body>
 </html>

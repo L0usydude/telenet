@@ -37,7 +37,7 @@ public class AuthorizationController {
         }
         else if (userimpl != null){
             if (userimpl.getPassword().equals(password)) {
-                return "redirect:/test";
+                return "redirect:/user";
             }
             else {
                 return "authorization/authorization";
@@ -49,4 +49,5 @@ public class AuthorizationController {
             return "authorization/authorization";
         }
     }
+
 }

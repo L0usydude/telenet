@@ -18,8 +18,9 @@ public class RegistrationController {
     public RegistrationController(Storage storage1){
         storage = storage1;
     }
+
     @GetMapping("/registration")
-    public String authorization(Model model){
+    public String registration(Model model){
         model.addAttribute("error","" );
         return "authorization/registration";
     }
