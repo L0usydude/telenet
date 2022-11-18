@@ -2,6 +2,7 @@ package com.telenet.telenet.utils;
 
 import com.telenet.telenet.models.area.Area;
 import com.telenet.telenet.models.enums.roles.RoleEnum;
+import com.telenet.telenet.models.enums.status.StatusEnum;
 import com.telenet.telenet.models.order.Order;
 import com.telenet.telenet.models.service.Service;
 import com.telenet.telenet.models.template.Template;
@@ -167,7 +168,10 @@ public class Storage {
     public User getAdminByLogin(String name){
         return userAdminMap.values().stream().filter(user -> Objects.equals(user.getLogin(), name)).findFirst().orElse(null);
     }
-    public List<Service> getServiceListByUserImplLogin(String login){
-        return serviceMap.values().stream().filter(service -> service.getUser().getLogin().equals(login)).toList();
+    public List<Service> getActiveServiceListByUserImplLogin(String login){
+        return serviceMap.values().stream().filter(service -> service.getUser().getLogin().equals(login) && service.getStatus().equals(StatusEnum.ACTIVE)).toList();
+    }
+    public List<Order> getOrderListByUserImplLogin(String login){
+        return orderMap.values().stream().filter(order -> order.getService().getUser().getLogin().equals(login)).toList();
     }
 }

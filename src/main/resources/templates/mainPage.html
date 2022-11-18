@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="authorStyle.css" type="text/css" media="all" href="authorStyle.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/authorStyle.css" th:href="@{/static/css/authorStyle.css}">
 </head>
 <body>
 <ul class="top-bar">
     <li>
-        <a th:href="@{/registration}">profile</a>
+        <a th:href="@{/user(login = ${login})}">profile</a>
     </li>
     <li>
         <a href="offersPage.html">offers</a>
@@ -17,9 +17,9 @@
     <li>
         <a href="infoPage.html">info</a>
     </li>
-    <li>
-        <a href="pricesPage.html">prices</a>
-    </li>
+<!--    <li>-->
+<!--        <a href="pricesPage.html">prices</a>-->
+<!--    </li>-->
 </ul>
 </body>
 </html>

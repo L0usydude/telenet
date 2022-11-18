@@ -37,7 +37,7 @@ public class AuthorizationController {
         }
         else if (userimpl != null){
             if (userimpl.getPassword().equals(password)) {
-                return "redirect:/user?login="+userimpl.getLogin();
+                return "redirect:/mainPage?login="+userimpl.getLogin();
             }
             else {
                 return "authorization/authorization";

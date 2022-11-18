@@ -19,11 +19,18 @@ public class UserController {
         return "users/user";
     }
 
-    @GetMapping("/userServices")
-    public String userTemplatesOut(Model model, @RequestParam(name = "login") String login){
-        model.addAttribute("userServicesCollection", storage.getServiceListByUserImplLogin(login));
+    @GetMapping("/userActiveServices")
+    public String userServicesOut(Model model, @RequestParam(name = "login") String login){
+        model.addAttribute("userActiveServicesCollection", storage.getActiveServiceListByUserImplLogin(login));
 
-        return "modelsLists/userServices?login=";
+        return "modelsLists/userActiveServices";
+    }
+
+
+    @GetMapping("/userOrders")
+    public String userOrdersOut(Model model, @RequestParam(name = "login") String login){
+        model.addAttribute("userOrdersCollection", storage.getOrderListByUserImplLogin(login));
+        return "modelsLists/userOrders";
     }
 
 }

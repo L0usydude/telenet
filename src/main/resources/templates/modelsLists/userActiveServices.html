@@ -6,12 +6,11 @@
     <title>Title</title>
 </head>
 <body>
-<ul th:each="value : ${userServicesCollection}">
+<ul th:each="value : ${userActiveServicesCollection}">
     <li><span th:text = "${value.name}">Name</span></li>
     <li><span th:text = "${value.description}">Description</span></li>
     <li><span th:text = "${value.price}">Price</span></li>
     <li><span th:text = "${value.status}">Status</span></li>
 </ul>
-
 </body>
 </html>
