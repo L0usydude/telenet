@@ -28,4 +28,7 @@ public class User extends BaseEntity {
         this.role = role;
     }
 
+    public int getId(){
+        return super.getId();
+    }
 }

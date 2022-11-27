@@ -17,5 +17,11 @@ public class MainPageController {
         model.addAttribute("login", login);
         return "/mainPage";
     }
+    @GetMapping("/infoPage")
+    public String infoPageOut(Model model, @RequestParam(name = "login") String login){
+        model.addAttribute("login", login);
+        System.out.println(login);
+        return "/infoPage";
+    }
 
 }

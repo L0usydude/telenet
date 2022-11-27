@@ -165,6 +165,9 @@ public class Storage {
     public User getUserImplByLogin(String name){
         return userImplMap.values().stream().filter(user -> Objects.equals(user.getLogin(), name)).findFirst().orElse(null);
     }
+    public User getUserImplById(int id){
+        return  userImplMap.values().stream().filter(user -> user.getId() == id).findFirst().orElse(null);
+    }
     public User getAdminByLogin(String name){
         return userAdminMap.values().stream().filter(user -> Objects.equals(user.getLogin(), name)).findFirst().orElse(null);
     }

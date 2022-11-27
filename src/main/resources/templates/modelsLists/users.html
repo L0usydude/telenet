@@ -7,9 +7,12 @@
 </head>
 <body>
 <ul th:each="value : ${usersCollection}">
+    <li><a th:href = "@{/usersEditor(login = ${value.login})}">edit</a></li>
+<!--    <a th:href="@{/offersPage(login = ${login})}">offers</a>-->
     <li><span th:text = "${value.name}">Name</span></li>
     <li><span th:text = "${value.login}">Login</span></li>
     <li><span th:text = "${value.password}">Password</span></li>
+    <li><span th:text = "${value.id}">Id</span></li>
 </ul>
 
 </body>
