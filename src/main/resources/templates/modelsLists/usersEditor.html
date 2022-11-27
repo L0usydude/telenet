@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/usersEditor}" method = "post">
+        <input name="prevLogin" type = "hidden" th:value = "${value.login}">Login</input>
+        <input name = "name" type="text" th:value="${value.name}">
+        <input name = "login" type="text" th:value="${value.login}">
+        <input name = "password" type="text" th:value="${value.password}">
+        <input type = "submit" value="update">
+    </form>
+</body>
+</html>

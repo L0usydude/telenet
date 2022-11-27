@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul th:each="value : ${ordersCollection}">
+    <li><span th:text = "${value.admin}">Admin</span></li>
+    <li><span th:text = "${value.service.id}">Service</span></li>
+    <li><span th:text = "${value.status}">Status</span></li>
+    <li><span th:text = "${value.action}">Action</span></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/authorStyle.css" th:href="@{/static/css/authorStyle.css}">
+</head>
+<body>
+<ul class="top-bar">
+    <li>
+        <a th:href="@{/user(login = ${login})}">profile</a>
+    </li>
+    <li>
+        <a th:href="@{/offersPage(login = ${login})}">offers</a>
+    </li>
+    <li>
+        <a th:href="@{/infoPage(login = ${login})}">info</a>
+    </li>
+<!--    <li>-->
+<!--        <a href="pricesPage.html">prices</a>-->
+<!--    </li>-->
+</ul>
+</body>
+</html>

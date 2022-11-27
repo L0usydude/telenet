@@ -1,0 +1,2 @@
+{"type":"com.telenet.telenet.models.user.User","id":0,"role":"ADMIN"}
+{"type":"com.telenet.telenet.models.user.User","id":1,"name":"admin1","login":"adminLogin1","password":"adminPasswd1","role":"ADMIN"}

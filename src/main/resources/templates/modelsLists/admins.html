@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul th:each="value : ${adminsCollection}">
+    <li><span th:text = "${value.name}">Name</span></li>
+    <li><span th:text = "${value.login}">Login</span></li>
+    <li><span th:text = "${value.password}">Password</span></li>
+</ul>
+
+</body>
+</html>
