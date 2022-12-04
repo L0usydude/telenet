@@ -7,6 +7,7 @@
 </head>
 <body>
 <ul th:each="value : ${adminsCollection}">
+    <li><a th:href = "@{/adminsEditor(login = ${value.login})}">edit</a></li>
     <li><span th:text = "${value.name}">Name</span></li>
     <li><span th:text = "${value.login}">Login</span></li>
     <li><span th:text = "${value.password}">Password</span></li>

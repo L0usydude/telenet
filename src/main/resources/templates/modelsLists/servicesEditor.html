@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/servicesEditor}" method = "post">
+    <input name="id" type = "hidden" th:value = "${value.id}">id</input>
+    <input name = "name" type="text" th:value="${value.name}">
+    <input name = "description" type="text" th:value="${value.description}">
+    <input name = "price" type="text" th:value="${value.price}">
+    <input name = "templateId" type="text" th:value="${value.template.id}">
+    <input name = "userLogin" type="text" th:value="${value.user.getLogin()}">
+    <input name = "status" type="text" th:value="${value.status}">
+    <input type = "submit" value="update">
+</form>
+</body>
+</html>

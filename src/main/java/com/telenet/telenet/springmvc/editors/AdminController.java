@@ -1,4 +1,4 @@
-package com.telenet.telenet.springmvc;
+package com.telenet.telenet.springmvc.editors;
 
 import com.telenet.telenet.utils.Storage;
 import org.springframework.beans.factory.annotation.Autowired;

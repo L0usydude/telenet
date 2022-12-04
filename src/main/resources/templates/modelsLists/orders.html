@@ -7,7 +7,8 @@
 </head>
 <body>
 <ul th:each="value : ${ordersCollection}">
-    <li><span th:text = "${value.admin}">Admin</span></li>
+    <li><a th:href = "@{/ordersEditor(id = ${value.id})}">edit</a></li>
+    <li><span th:text = "${value.admin.id}">Admin</span></li>
     <li><span th:text = "${value.service.id}">Service</span></li>
     <li><span th:text = "${value.status}">Status</span></li>
     <li><span th:text = "${value.action}">Action</span></li>

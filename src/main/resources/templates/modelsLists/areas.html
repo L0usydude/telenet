@@ -7,6 +7,7 @@
 </head>
 <body>
 <ul th:each="value : ${areasCollection}">
+    <li><a th:href = "@{/areasEditor(id = ${value.id})}">edit</a></li>
     <li><span th:text = "${value.name}">Name</span></li>
     <li><span th:text = "${value.description}">Description</span></li>
 </ul>

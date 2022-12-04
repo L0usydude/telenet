@@ -1,3 +1,3 @@
 {"type":"com.telenet.telenet.models.user.User","id":0,"name":"user1","login":"user1","password":"user1","role":"DEFAULT_USER"}
-{"type":"com.telenet.telenet.models.user.User","id":1,"name":"defUser123","login":"defLogin123","password":"defPasswd123","role":"DEFAULT_USER"}
-{"type":"com.telenet.telenet.models.user.User","id":123,"name":"name1","login":"main1","password":"main1","role":"DEFAULT_USER"}
+{"type":"com.telenet.telenet.models.user.User","id":1,"name":"defUser1","login":"defLogin1","password":"defPasswd1","role":"DEFAULT_USER"}
+{"type":"com.telenet.telenet.models.user.User","id":123,"name":"aboba","login":"aboba","password":"aboba","role":"DEFAULT_USER"}

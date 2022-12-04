@@ -30,6 +30,8 @@ public class TelenetApplication {
 //				context.close();
 //			}});
 //		Storage storage1 = context.getBean(Storage.class);
+//
+//		storage1.getService(0).setUser(storage1.getUserImplByLogin("user1"));
 //		System.out.println(storage1.getArea(1));
 //		User admin1 = new User(1,"admin1", "adminLogin1", "adminPasswd1", RoleEnum.ADMIN);
 //		Template template1 = new Template(0,"tempName1", "tempDescription1", 150,storage1.getArea(0));
@@ -40,7 +42,13 @@ public class TelenetApplication {
 //		storage1.addUserAdmin(admin1);
 //		User defUser = new User(1, "defUser1", "defLogin1", "defPasswd1", RoleEnum.DEFAULT_USER);
 //		storage1.addUserImpl(defUser);
-
+//		try {
+//			JsonMapper.serialize(storage1.getServiceMap(), Service.class);
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println(storage1.getService(0));
 	}
 
 }
