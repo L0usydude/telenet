@@ -10,6 +10,11 @@
     <li><span th:text = "${value.name}">Name</span></li>
     <li><span th:text = "${value.description}">Description</span></li>
     <li><span th:text = "${value.price}">Price</span></li>
+    <li><form th:action="@{/offersPage}" method="post">
+        <input type="hidden" name = "serviceId" th:value="${value.id}">
+        <input type="hidden" name = "login" th:value="${login}">
+        <input type = "submit" value="update">
+    </form></li>
 </ul>
 
 </body>

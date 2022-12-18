@@ -175,6 +175,6 @@ public class Storage {
         return serviceMap.values().stream().filter(service -> service.getUser().getLogin().equals(login) && service.getStatus().equals(StatusEnum.ACTIVE)).toList();
     }
     public List<Order> getOrderListByUserImplLogin(String login){
-        return orderMap.values().stream().filter(order -> order.getService().getUser().getLogin().equals(login)).toList();
+        return orderMap.values().stream().filter(order -> order.getUser().getLogin().equals(login)).toList();
     }
 }

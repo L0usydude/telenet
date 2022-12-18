@@ -18,14 +18,14 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "type")
 
 public class Order extends BaseEntity {
-    private User admin;
+    private User user;
     private Service service;
     private StatusEnum status;
     private ActionEnum action;
 
-    public Order(int id, User admin, Service service, StatusEnum status, ActionEnum action) {
+    public Order(int id, User user, Service service, StatusEnum status, ActionEnum action) {
         super(id);
-        this.admin = admin;
+        this.user = user;
         this.service = service;
         this.status = status;
         this.action = action;

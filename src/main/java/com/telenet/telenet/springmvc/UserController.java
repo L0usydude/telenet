@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,7 +31,16 @@ public class UserController {
     @GetMapping("/userOrders")
     public String userOrdersOut(Model model, @RequestParam(name = "login") String login){
         model.addAttribute("userOrdersCollection", storage.getOrderListByUserImplLogin(login));
+        model.addAttribute("login", login);
         return "modelsLists/userOrders";
+    }
+
+    @PostMapping("/userOrders")
+    public String userOrdersDel(Model model, @RequestParam(name = "id") String id, @RequestParam(name = "login") String login)
+    {
+        storage.delOrder(Integer.parseInt(id));
+        model.addAttribute("login",login);
+        return "redirect:/mainPage?login="+login.toString();
     }
 
 }

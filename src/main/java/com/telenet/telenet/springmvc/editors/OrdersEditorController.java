@@ -21,14 +21,15 @@ public class OrdersEditorController {
     @GetMapping("/ordersEditor")
     public String mainPage(Model model, @RequestParam(name = "id") int id){
         model.addAttribute("value",storage.getOrder(id));
+        model.addAttribute("statusENUM", StatusEnum.values());
         return "modelsLists/ordersEditor";
     }
     @PostMapping("/ordersEditor")
-    public String userUpdate(@RequestParam(name = "id") String id, @RequestParam(name = "adminId") String newAdminId,@RequestParam(name = "serviceId") String newServiceId,
+    public String userUpdate(@RequestParam(name = "id") String id, @RequestParam(name = "userId") String newUserId,@RequestParam(name = "serviceId") String newServiceId,
                              @RequestParam(name = "status") String newStatus,@RequestParam(name = "action") String newAction){
         storage.getOrder(Integer.parseInt(id)).setStatus(StatusEnum.valueOf(newStatus));
         storage.getOrder(Integer.parseInt(id)).setAction(ActionEnum.valueOf(newAction));
-        storage.getOrder(Integer.parseInt(id)).setAdmin(storage.getUserAdmin(Integer.parseInt(newAdminId)));
+        storage.getOrder(Integer.parseInt(id)).setUser(storage.getUserAdmin(Integer.parseInt(newUserId)));
         storage.getOrder(Integer.parseInt(id)).setService(storage.getService(Integer.parseInt(newServiceId)));
         return "redirect:/admin/orders";
     }

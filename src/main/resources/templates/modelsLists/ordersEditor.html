@@ -8,9 +8,12 @@
 <body>
 <form th:action="@{/ordersEditor}" method = "post">
     <input name="id" type = "hidden" th:value = "${value.id}">id</input>
-    <input name = "adminId" type="text" th:value="${value.admin.id}">
+    <input name = "userId" type="text" th:value="${value.user.id}">
     <input name = "serviceId" type="text" th:value="${value.service.id}">
-    <input name = "status" type="text" th:value="${value.status}">
+<!--    <input name = "status" type="text" th:value="${value.status}">-->
+    <select name = "status">
+        <option data-th-each = "status1 : ${statusENUM}" th:value = "${status1.name}" th:text = "${status1.name}" th:selected = "${value.status.name.equals(status1.name)}"></option>
+    </select>
     <input name = "action" type="text" th:value="${value.action}">
     <input type = "submit" value="update">
 </form>

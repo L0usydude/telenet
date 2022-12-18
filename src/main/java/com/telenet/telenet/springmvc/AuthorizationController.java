@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AuthorizationController {
-    @Autowired
     Storage storage;
     @Autowired
     public AuthorizationController(Storage storage1){
