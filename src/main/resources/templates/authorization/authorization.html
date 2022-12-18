@@ -4,15 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Authorization</title>
-    <link rel="stylesheet" th:href="@{/templates/static/authorStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/authorStyle.css}"/>
 </head>
 <body>
-<h1 align="center">
+<h1>
     Authorization
 </h1>
 <form th:action="@{/authorization}" method="post">
-    <input th:value = "${login}" type="text" name="login">
-    <input type="password" name="password">
+    <label>
+        <input th:value = "${login}" type="text" name="login">
+    </label>
+    <label>
+        <input type="password" name="password">
+    </label>
     <input type="submit" value="sign in">
 </form>
 <p th:text = "${error}">
