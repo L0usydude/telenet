@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org/">
+<link rel="stylesheet" th:href="@{/css/profileStyle.css}"/>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div>
 <table>
-    <a th:href="@{/user/userActiveServices(login = ${login})}">services </a>
-    <a th:href="@{/user/userOrders(login = ${login})}">orders </a>
+    <tr>
+    <td><a th:href="@{/user/userActiveServices(login = ${login})}">services </a></td>
+    <td><a th:href="@{/user/userOrders(login = ${login})}">orders </a></td>
+    </tr>
 </table>
-
+</div>
 
 </body>
 </html>

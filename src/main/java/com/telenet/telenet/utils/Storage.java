@@ -1,5 +1,6 @@
 package com.telenet.telenet.utils;
 
+import com.telenet.telenet.models.BaseEntity;
 import com.telenet.telenet.models.area.Area;
 import com.telenet.telenet.models.enums.roles.RoleEnum;
 import com.telenet.telenet.models.enums.status.StatusEnum;
@@ -13,9 +14,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+
 @Component @ComponentScan(basePackages = "java.util.HashMap")
 public class Storage {
     Map<Integer, Area> areaMap;
@@ -123,6 +123,8 @@ public class Storage {
         areaMap.put(newArea.getId(), newArea);
     }
     public void addOrder(Order newOrder){
+        int max = orderMap.values().stream().mapToInt(BaseEntity::getId).max().orElseThrow(NoSuchElementException::new);
+        newOrder.setId(max + 1);
         orderMap.put(newOrder.getId(), newOrder);
     }
     public void addService(Service newService){
@@ -172,9 +174,9 @@ public class Storage {
         return userAdminMap.values().stream().filter(user -> Objects.equals(user.getLogin(), name)).findFirst().orElse(null);
     }
     public List<Service> getActiveServiceListByUserImplLogin(String login){
-        return serviceMap.values().stream().filter(service -> service.getUser().getLogin().equals(login) && service.getStatus().equals(StatusEnum.ACTIVE)).toList();
+        return serviceMap.values().stream().filter(service -> login.equals(service.getUser().getLogin()) && service.getStatus().equals(StatusEnum.ACTIVE)).toList();
     }
     public List<Order> getOrderListByUserImplLogin(String login){
-        return orderMap.values().stream().filter(order -> order.getUser().getLogin().equals(login)).toList();
+        return orderMap.values().stream().filter(order -> login.equals(order.getUser().getLogin())).toList();
     }
 }

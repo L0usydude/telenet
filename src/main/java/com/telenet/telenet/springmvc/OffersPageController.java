@@ -26,8 +26,8 @@ public class OffersPageController {
     }
     @PostMapping("/offersPage")
     public String addOffer(Model model, @RequestParam(name = "serviceId") String serviceId, @RequestParam(name = "login") String login){
-        storage.addOrder(new Order(storage.getOrderMap().size() + 1, storage.getUserImplByLogin(login), storage.getService(Integer.parseInt(serviceId)), StatusEnum.ENTERING, ActionEnum.CONNECT));
+        storage.addOrder(new Order(storage.getUserImplByLogin(login), storage.getService(Integer.parseInt(serviceId)), StatusEnum.ENTERING, ActionEnum.CONNECT));
         model.addAttribute("login", login);
-        return "redirect:/mainPage?login=" + login.toString();
+        return "redirect:/mainPage?login=" + login;
     }
 }

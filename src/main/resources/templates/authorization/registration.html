@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Registration</title>
-  <link rel="stylesheet" th:href="authorStyle.css" type="text/css" media="all" href="authorStyle.css">
+  <link rel="stylesheet" th:href="@{/css/authorStyle.css}"/>
 </head>
 <body>
 <h1 align="center">
@@ -17,6 +17,6 @@
 </form>
 <p th:text = "${error}">
 </p>
-<a th:href="@{/authorization}">sign in</a>
+<div><a th:href="@{/authorization}">sign in</a></div>
 </body>
 </html>

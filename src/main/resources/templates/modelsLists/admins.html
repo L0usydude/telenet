@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/EntitiesStyle.css}"/>
 </head>
 <body>
+<form th:action = "@{/admin/adminLoginSearch}" method="post">
+    <input th:name = "search" type="text">
+    <input type="submit" value="update">
+</form>
 <ul th:each="value : ${adminsCollection}">
     <li><a th:href = "@{/adminsEditor(login = ${value.login})}">edit</a></li>
     <li><span th:text = "${value.name}">Name</span></li>

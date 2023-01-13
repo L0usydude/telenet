@@ -4,17 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/authorStyle.css}"/>
 </head>
 <body>
-<table>
+<div class="tablediv"><table>
     <h1>nothing</h1>
-    <a th:href="@{/admin/admins}">admins </a>
-    <a th:href="@{/admin/users}">users </a>
-    <a th:href="@{/admin/templates}">templates </a>
-    <a th:href="@{/admin/services}">services </a>
-    <a th:href="@{/admin/orders}">orders </a>
-    <a th:href="@{/admin/areas}">areas </a>
-</table>
+    <tr>
+        <td><a th:href="@{/admin/admins}">admins </a></td>
+        <td><a th:href="@{/admin/users}">users </a></td>
+        <td><a th:href="@{/admin/templates}">templates </a></td>
+        <td><a th:href="@{/admin/services}">services </a></td>
+        <td><a th:href="@{/admin/orders}">orders </a></td>
+        <td><a th:href="@{/admin/areas}">areas </a></td>
+    </tr>
+</table></div>
 
 
 </body>

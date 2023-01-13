@@ -19,7 +19,6 @@ public class Template extends BaseEntity {
     private String name;
     private String description;
     private double price;
-    @Autowired
     private Area area;
 
     public Template(int id, String name, String description, double price, Area area) {
