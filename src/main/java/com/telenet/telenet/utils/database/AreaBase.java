@@ -49,6 +49,22 @@ public class AreaBase {
         return listOfAreas(resultSet);
     }
 
+    public List<Area> idSearch(String description) throws SQLException {
+        String query = "SELECT * from \"Area\" where id = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setInt(1, Integer.parseInt(description));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfAreas(resultSet);
+    }
+
+    public List<Area> descriptionSearch(String description) throws SQLException {
+        String query = "SELECT * from \"Area\" where description LIKE ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setString(1, "%" + description + "%");
+        ResultSet resultSet = statement.executeQuery();
+        return listOfAreas(resultSet);
+    }
+
     public void updateById(String id, String newName, String newDescription) throws SQLException {
         String query = "UPDATE \"Area\" SET name = ?, \"description\" = ? where id = ?;";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);

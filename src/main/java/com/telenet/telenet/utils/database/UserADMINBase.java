@@ -48,6 +48,31 @@ public class UserADMINBase {
         ResultSet resultSet = statement.executeQuery();
         return listOfUsers(resultSet);
     }
+
+    public List<User> idSearch(String id) throws SQLException {
+        String query = "SELECT * from \"UserADMIN\" where id = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setInt(1, Integer.parseInt(id));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfUsers(resultSet);
+    }
+
+    public List<User> nameSearch(String name) throws SQLException {
+        String query = "SELECT * from \"UserADMIN\" where name LIKE ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setString(1, "%" + name + "%");
+        ResultSet resultSet = statement.executeQuery();
+        return listOfUsers(resultSet);
+    }
+
+    public List<User> passwordSearch(String password) throws SQLException {
+        String query = "SELECT * from \"UserADMIN\" where password LIKE ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setString(1, "%" + password + "%");
+        ResultSet resultSet = statement.executeQuery();
+        return listOfUsers(resultSet);
+    }
+
     public void updateByLogin(String prevLogin, String newLogin, String newName, String newPassword) throws SQLException {
         String query = "UPDATE \"UserADMIN\" SET login = ?, \"name\" = ?, \"password\" = ? where login = ?;";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);

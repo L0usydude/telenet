@@ -7,10 +7,14 @@
     <link rel="stylesheet" th:href="@{/css/EntitiesStyle.css}"/>
 </head>
 <body>
-<form th:action = "@{/admin/userLoginSearch}" method="post">
+<form th:action = "@{/admin/userSearch}" method="post">
     <input th:name = "search" type="text">
+    <select name = "field">
+        <option data-th-each = "field : ${fields}" th:value = "${field}" th:text = "${field}"></option>
+    </select>
     <input type="submit" value="update">
 </form>
+
 <ul th:each="value : ${usersCollection}">
     <li><a th:href = "@{/usersEditor(login = ${value.login})}">edit</a></li>
 <!--    <a th:href="@{/offersPage(login = ${login})}">offers</a>-->

@@ -51,10 +51,43 @@ public class OrderBase {
         return listOfOrders(resultSet).get(0);
     }
 
-    public List<Order> OrderUserIdSearch(String userId) throws SQLException {
+    public List<Order> userSearch(String userId) throws SQLException {
         String query = "SELECT * from \"Order\" where \"userId\" = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(userId));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfOrders(resultSet);
+    }
+
+    public List<Order> idSearch(String userId) throws SQLException {
+        String query = "SELECT * from \"Order\" where \"id\" = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setInt(1, Integer.parseInt(userId));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfOrders(resultSet);
+    }
+
+
+    public List<Order> serviceSearch(String userId) throws SQLException {
+        String query = "SELECT * from \"Order\" where \"serviceId\" = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setInt(1, Integer.parseInt(userId));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfOrders(resultSet);
+    }
+
+    public List<Order> statusSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Order\" where status LIKE ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setString(1, "%" + name + "%");
+        ResultSet resultSet = statement.executeQuery();
+        return listOfOrders(resultSet);
+    }
+
+    public List<Order> actionSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Order\" where action LIKE ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setString(1, "%" + name + "%");
         ResultSet resultSet = statement.executeQuery();
         return listOfOrders(resultSet);
     }

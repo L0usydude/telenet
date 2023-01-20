@@ -7,8 +7,11 @@
     <link rel="stylesheet" th:href="@{/css/EntitiesStyle.css}"/>
 </head>
 <body>
-<form th:action = "@{/admin/serviceNameSearch}" method="post">
+<form th:action = "@{/admin/serviceSearch}" method="post">
     <input th:name = "search" type="text">
+    <select name = "field">
+        <option data-th-each = "field : ${fields}" th:value = "${field}" th:text = "${field}"></option>
+    </select>
     <input type="submit" value="update">
 </form>
 <ul th:each="value : ${servicesCollection}">
@@ -17,8 +20,9 @@
     <li><span th:text = "${value.description}">Description</span></li>
     <li><span th:text = "${value.price}">Price</span></li>
     <li><span th:text = "${value.template.id}">Template</span></li>
-    <li><span th:text = "${value.user}">User</span></li>
+    <li><span th:text = "${value.user.id}">User</span></li>
     <li><span th:text = "${value.status}">Status</span></li>
+    <li><span th:text = "${value.id}">Status</span></li>
 </ul>
 
 </body>

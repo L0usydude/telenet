@@ -58,6 +58,54 @@ public class ServiceBase {
         return listOfServices(resultSet);
     }
 
+    public List<Service> descriptionSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Service\" where description LIKE ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setString(1, "%" + name + "%");
+        ResultSet resultSet = statement.executeQuery();
+        return listOfServices(resultSet);
+    }
+
+    public List<Service> priceSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Service\" where price = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setDouble(1, Double.parseDouble(name));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfServices(resultSet);
+    }
+
+    public List<Service> templateSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Service\" where \"templateId\" = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setInt(1, Integer.parseInt(name));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfServices(resultSet);
+    }
+
+    public List<Service> userSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Service\" where \"userId\" = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setInt(1, Integer.parseInt(name));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfServices(resultSet);
+    }
+
+    public List<Service> idSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Service\" where \"id\" = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setInt(1, Integer.parseInt(name));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfServices(resultSet);
+    }
+
+    public List<Service> statusSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Service\" where status LIKE ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setString(1, "%" + name + "%");
+        ResultSet resultSet = statement.executeQuery();
+        return listOfServices(resultSet);
+    }
+
     public void updateById(String id, String newName, String newDescription, String newPrice, String newTemplateId,
                            String newUserId, String newStatus) throws SQLException {
         String query = "UPDATE \"Service\" SET name = ?, \"description\" = ?, price = ?, \"templateId\" = ?, \"userId\" = ?, \"status\" = ? where id = ?;";

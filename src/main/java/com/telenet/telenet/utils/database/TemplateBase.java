@@ -56,6 +56,38 @@ public class TemplateBase {
         return listOfTemplates(resultSet);
     }
 
+    public List<Template> descriptionSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Template\" where description LIKE ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setString(1, "%" + name + "%");
+        ResultSet resultSet = statement.executeQuery();
+        return listOfTemplates(resultSet);
+    }
+
+    public List<Template> priceSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Template\" where price = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setDouble(1, Double.parseDouble(name));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfTemplates(resultSet);
+    }
+
+    public List<Template> idSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Template\" where id = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setDouble(1, Double.parseDouble(name));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfTemplates(resultSet);
+    }
+
+    public List<Template> areaSearch(String name) throws SQLException {
+        String query = "SELECT * from \"Template\" where \"areaId\" = ?";
+        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        statement.setInt(1, Integer.parseInt(name));
+        ResultSet resultSet = statement.executeQuery();
+        return listOfTemplates(resultSet);
+    }
+
     public void updateById(String id, String newName, String newDescription, String newPrice, String newAreaId) throws SQLException {
         String query = "UPDATE \"Template\" SET name = ?, \"description\" = ?, price = ?, \"areaId\" = ? where id = ?;";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
