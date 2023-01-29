@@ -42,6 +42,10 @@ public class AreaBase {
     }
 
     public List<Area> nameSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfAreas();
+        }
         String query = "SELECT * from \"Area\" where name LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");
@@ -50,6 +54,10 @@ public class AreaBase {
     }
 
     public List<Area> idSearch(String description) throws SQLException {
+        if (description.equals(""))
+        {
+            return getListOfAreas();
+        }
         String query = "SELECT * from \"Area\" where id = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(description));
@@ -58,6 +66,10 @@ public class AreaBase {
     }
 
     public List<Area> descriptionSearch(String description) throws SQLException {
+        if (description.equals(""))
+        {
+            return getListOfAreas();
+        }
         String query = "SELECT * from \"Area\" where description LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + description + "%");

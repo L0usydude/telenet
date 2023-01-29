@@ -52,6 +52,10 @@ public class OrderBase {
     }
 
     public List<Order> userSearch(String userId) throws SQLException {
+        if (userId.equals(""))
+        {
+            return getListOfOrders();
+        }
         String query = "SELECT * from \"Order\" where \"userId\" = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(userId));
@@ -60,6 +64,10 @@ public class OrderBase {
     }
 
     public List<Order> idSearch(String userId) throws SQLException {
+        if (userId.equals(""))
+        {
+            return getListOfOrders();
+        }
         String query = "SELECT * from \"Order\" where \"id\" = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(userId));
@@ -69,6 +77,10 @@ public class OrderBase {
 
 
     public List<Order> serviceSearch(String userId) throws SQLException {
+        if (userId.equals(""))
+        {
+            return getListOfOrders();
+        }
         String query = "SELECT * from \"Order\" where \"serviceId\" = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(userId));
@@ -77,6 +89,10 @@ public class OrderBase {
     }
 
     public List<Order> statusSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfOrders();
+        }
         String query = "SELECT * from \"Order\" where status LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");
@@ -85,6 +101,10 @@ public class OrderBase {
     }
 
     public List<Order> actionSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfOrders();
+        }
         String query = "SELECT * from \"Order\" where action LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");

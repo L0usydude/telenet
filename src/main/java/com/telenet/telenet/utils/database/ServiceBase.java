@@ -51,6 +51,10 @@ public class ServiceBase {
     }
 
     public List<Service> nameSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfServices();
+        }
         String query = "SELECT * from \"Service\" where name LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");
@@ -59,6 +63,10 @@ public class ServiceBase {
     }
 
     public List<Service> descriptionSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfServices();
+        }
         String query = "SELECT * from \"Service\" where description LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");
@@ -67,6 +75,10 @@ public class ServiceBase {
     }
 
     public List<Service> priceSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfServices();
+        }
         String query = "SELECT * from \"Service\" where price = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setDouble(1, Double.parseDouble(name));
@@ -75,6 +87,10 @@ public class ServiceBase {
     }
 
     public List<Service> templateSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfServices();
+        }
         String query = "SELECT * from \"Service\" where \"templateId\" = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(name));
@@ -83,6 +99,10 @@ public class ServiceBase {
     }
 
     public List<Service> userSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfServices();
+        }
         String query = "SELECT * from \"Service\" where \"userId\" = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(name));
@@ -91,6 +111,10 @@ public class ServiceBase {
     }
 
     public List<Service> idSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfServices();
+        }
         String query = "SELECT * from \"Service\" where \"id\" = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(name));
@@ -99,6 +123,10 @@ public class ServiceBase {
     }
 
     public List<Service> statusSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfServices();
+        }
         String query = "SELECT * from \"Service\" where status LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");

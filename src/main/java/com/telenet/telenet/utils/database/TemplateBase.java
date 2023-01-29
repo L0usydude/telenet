@@ -49,6 +49,10 @@ public class TemplateBase {
     }
 
     public List<Template> nameSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfTemplates();
+        }
         String query = "SELECT * from \"Template\" where name LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");
@@ -57,6 +61,10 @@ public class TemplateBase {
     }
 
     public List<Template> descriptionSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfTemplates();
+        }
         String query = "SELECT * from \"Template\" where description LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");
@@ -65,6 +73,10 @@ public class TemplateBase {
     }
 
     public List<Template> priceSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfTemplates();
+        }
         String query = "SELECT * from \"Template\" where price = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setDouble(1, Double.parseDouble(name));
@@ -73,6 +85,10 @@ public class TemplateBase {
     }
 
     public List<Template> idSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfTemplates();
+        }
         String query = "SELECT * from \"Template\" where id = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setDouble(1, Double.parseDouble(name));
@@ -81,6 +97,10 @@ public class TemplateBase {
     }
 
     public List<Template> areaSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfTemplates();
+        }
         String query = "SELECT * from \"Template\" where \"areaId\" = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(name));

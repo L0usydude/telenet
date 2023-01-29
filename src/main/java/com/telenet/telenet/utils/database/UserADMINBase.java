@@ -42,6 +42,10 @@ public class UserADMINBase {
         return listOfUsers(resultSet).get(0);
     }
     public List<User> loginSearch(String login) throws SQLException {
+        if (login.equals(""))
+        {
+            return getListOfUsers();
+        }
         String query = "SELECT * from \"UserADMIN\" where login LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + login + "%");
@@ -50,6 +54,10 @@ public class UserADMINBase {
     }
 
     public List<User> idSearch(String id) throws SQLException {
+        if (id.equals(""))
+        {
+            return getListOfUsers();
+        }
         String query = "SELECT * from \"UserADMIN\" where id = ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(id));
@@ -58,6 +66,10 @@ public class UserADMINBase {
     }
 
     public List<User> nameSearch(String name) throws SQLException {
+        if (name.equals(""))
+        {
+            return getListOfUsers();
+        }
         String query = "SELECT * from \"UserADMIN\" where name LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");
@@ -66,6 +78,10 @@ public class UserADMINBase {
     }
 
     public List<User> passwordSearch(String password) throws SQLException {
+        if (password.equals(""))
+        {
+            return getListOfUsers();
+        }
         String query = "SELECT * from \"UserADMIN\" where password LIKE ?";
         PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + password + "%");

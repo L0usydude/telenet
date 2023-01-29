@@ -12,12 +12,20 @@
     <select name = "field">
         <option data-th-each = "field : ${fields}" th:value = "${field}" th:text = "${field}"></option>
     </select>
+    <select name = "fieldForSort">
+        <option data-th-each = "fieldForSort : ${fieldsForSort}" th:value = "${fieldForSort}" th:text = "${fieldForSort}"></option>
+    </select>
+    <select name = "upDown">
+        <option th:value="up" th:text="up">up</option>
+        <option th:value="down" th:text="down">down</option>
+    </select>
     <input type="submit" value="update">
 </form>
 
 
 <ul th:each="value : ${ordersCollection}">
     <li><a th:href = "@{/ordersEditor(id = ${value.id})}">edit</a></li>
+    <li><span th:text = "${value.id}">Admin</span></li>
     <li><span th:text = "${value.user.id}">Admin</span></li>
     <li><span th:text = "${value.service.id}">Service</span></li>
     <li><span th:text = "${value.status}">Status</span></li>

@@ -12,6 +12,13 @@
     <select name = "field">
         <option data-th-each = "field : ${fields}" th:value = "${field}" th:text = "${field}"></option>
     </select>
+    <select name = "fieldForSort">
+        <option data-th-each = "fieldForSort : ${fieldsForSort}" th:value = "${fieldForSort}" th:text = "${fieldForSort}"></option>
+    </select>
+    <select name = "upDown">
+        <option th:value="up" th:text="up">up</option>
+        <option th:value="down" th:text="down">down</option>
+    </select>
     <input type="submit" value="update">
 </form>
 <ul th:each="value : ${areasCollection}">
