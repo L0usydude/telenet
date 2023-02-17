@@ -1,31 +1,24 @@
-package com.telenet.telenet.springmvc;
+package com.telenet.telenet.springmvc.services;
 
 import com.telenet.telenet.models.user.User;
-import com.telenet.telenet.utils.Storage;
+import com.telenet.telenet.utils.database.UserADMINDataBase;
+import com.telenet.telenet.utils.database.UserDEFAULT_USERDataBase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller
-public class AuthorizationController {
-    Storage storage;
-    @Autowired
-    public AuthorizationController(Storage storage1){
-        storage = storage1;
-    }
-    @GetMapping("/authorization")
-    public String authorization(Model model){
-        model.addAttribute("error","" );
-        return "authorization/authorization";
-    }
+import java.sql.SQLException;
 
-    @PostMapping("/authorization")
-    public String checker(Model model, @RequestParam(name = "login") String login, @RequestParam(name = "password") String password ){
-        User user = storage.getAdminByLogin(login);
-        User userimpl = storage.getUserImplByLogin(login);
+@Service
+public class AuthorizationService {
+    @Autowired
+    UserDEFAULT_USERDataBase userDEFAULT_userDataBase;
+    @Autowired
+    UserADMINDataBase userADMINDataBase;
+    public String checker(Model model, @RequestParam(name = "login") String login, @RequestParam(name = "password") String password ) throws SQLException {
+        User user = userADMINDataBase.getByLogin(login);
+        User userimpl = userDEFAULT_userDataBase.getByLogin(login);
         if(user != null){
             if(user.getPassword().equals(password)) {
                 return "redirect:/admin";
@@ -48,5 +41,4 @@ public class AuthorizationController {
             return "authorization/authorization";
         }
     }
-
 }

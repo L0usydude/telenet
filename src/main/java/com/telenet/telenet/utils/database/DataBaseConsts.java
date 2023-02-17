@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 @Repository
-public class DatabaseConsts {
+public class DataBaseConsts {
     static String url = "jdbc:postgresql://localhost:5432/telenet";
     static String username = "postgres";
     static String password = "QWpo10@bdfy";

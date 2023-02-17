@@ -4,15 +4,13 @@ import com.telenet.telenet.models.enums.roles.RoleEnum;
 import com.telenet.telenet.models.user.User;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserADMINBase {
-    static DatabaseConsts consts;
+public class UserDEFAULT_USERDataBase {
+    static DataBaseConsts consts;
 
     public List<User> listOfUsers(ResultSet resultSet) throws SQLException {
         List<User> listOfUsers = new ArrayList<>();
@@ -22,32 +20,48 @@ public class UserADMINBase {
             user.setName(resultSet.getString(2));
             user.setLogin(resultSet.getString(3));
             user.setPassword(resultSet.getString(4));
-            user.setRole(RoleEnum.ADMIN);
+            user.setRole(RoleEnum.DEFAULT_USER);
             listOfUsers.add(user);
         }
         return listOfUsers;
     }
 
     public List<User> getListOfUsers() throws SQLException {
-        String query = "select * from \"UserADMIN\";" ;
-        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        String query = "select * from \"UserDEFAULT_USER\";" ;
+        PreparedStatement statement = DataBaseConsts.connection.prepareStatement(query);
         ResultSet resultSet = statement.executeQuery();
         return listOfUsers(resultSet);
     }
-    public User getUserADMIN(int id) throws SQLException {
-        String query = "select * from \"UserADMIN\" Where id = ?;" ;
-        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+    public User getUserDEFAULT_USER(int id) throws SQLException {
+        String query = "select * from \"UserDEFAULT_USER\" Where id = ?;" ;
+        PreparedStatement statement = DataBaseConsts.connection.prepareStatement(query);
         statement.setInt(1,id);
         ResultSet resultSet = statement.executeQuery();
         return listOfUsers(resultSet).get(0);
     }
+
+    public User getByLogin(String login) throws SQLException {
+        String query = "select * from \"UserDEFAULT_USER\" Where login like ?;" ;
+        PreparedStatement statement = DataBaseConsts.connection.prepareStatement(query);
+        statement.setString(1,"%" + login + "%");
+        ResultSet resultSet = statement.executeQuery();
+        List<User> userList = listOfUsers(resultSet);
+        if (userList.size() == 0) {
+            return null;
+        }
+        else {
+            User resUser = userList.get(0);
+            return resUser;
+        }
+    }
+
     public List<User> loginSearch(String login) throws SQLException {
         if (login.equals(""))
         {
             return getListOfUsers();
         }
-        String query = "SELECT * from \"UserADMIN\" where login LIKE ?";
-        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        String query = "SELECT * from \"UserDEFAULT_USER\" where login LIKE ?";
+        PreparedStatement statement = DataBaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + login + "%");
         ResultSet resultSet = statement.executeQuery();
         return listOfUsers(resultSet);
@@ -58,8 +72,8 @@ public class UserADMINBase {
         {
             return getListOfUsers();
         }
-        String query = "SELECT * from \"UserADMIN\" where id = ?";
-        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        String query = "SELECT * from \"UserDEFAULT_USER\" where id = ?";
+        PreparedStatement statement = DataBaseConsts.connection.prepareStatement(query);
         statement.setInt(1, Integer.parseInt(id));
         ResultSet resultSet = statement.executeQuery();
         return listOfUsers(resultSet);
@@ -70,8 +84,8 @@ public class UserADMINBase {
         {
             return getListOfUsers();
         }
-        String query = "SELECT * from \"UserADMIN\" where name LIKE ?";
-        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        String query = "SELECT * from \"UserDEFAULT_USER\" where name LIKE ?";
+        PreparedStatement statement = DataBaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + name + "%");
         ResultSet resultSet = statement.executeQuery();
         return listOfUsers(resultSet);
@@ -82,21 +96,33 @@ public class UserADMINBase {
         {
             return getListOfUsers();
         }
-        String query = "SELECT * from \"UserADMIN\" where password LIKE ?";
-        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        String query = "SELECT * from \"UserDEFAULT_USER\" where password LIKE ?";
+        PreparedStatement statement = DataBaseConsts.connection.prepareStatement(query);
         statement.setString(1, "%" + password + "%");
         ResultSet resultSet = statement.executeQuery();
         return listOfUsers(resultSet);
     }
 
     public void updateByLogin(String prevLogin, String newLogin, String newName, String newPassword) throws SQLException {
-        String query = "UPDATE \"UserADMIN\" SET login = ?, \"name\" = ?, \"password\" = ? where login = ?;";
-        PreparedStatement statement = DatabaseConsts.connection.prepareStatement(query);
+        String query = "UPDATE \"UserDEFAULT_USER\" SET login = ?, \"name\" = ?, \"password\" = ? where login = ?;";
+        PreparedStatement statement = DataBaseConsts.connection.prepareStatement(query);
         statement.setString(1,newLogin);
         statement.setString(2,newName);
         statement.setString(3,newPassword);
         statement.setString(4,prevLogin);
         statement.executeUpdate();
     }
+
+    public void addUser(User user) throws SQLException {
+        String query = "INSERT INTO \"UserDEFAULT_USER\" values(?,?,?,?,\'DEFAULT_USER\')";
+        PreparedStatement statement = DataBaseConsts.connection.prepareStatement(query);
+        statement.setInt(1,user.getId());
+        statement.setString(2, user.getName());
+        statement.setString(3, user.getLogin());
+        statement.setString(4,user.getPassword());
+        statement.executeUpdate();
+    }
+
+
 
 }
